@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+  
+  <title>Contact form</title>
+</head>
+<body>
+
+  <style>
+
+    .main-secrion {
+      height: 100px;
+      margin-bottom: 0px;
+    }
+
+  </style>
+
+  <!--First section-->
+  <div class="main-secrion">
+    <div class="container main-secrion__nav-container">
+      
+      <!--Navigation menu-->
+      <header class="main-secrion__header">
+        <a href="index.html"><img class="main-secrion__logo" src="icons/Logo.svg" alt=""></a>
+      </header>
+      <nav class="main-secrion__nav nav-menu">
+        <ul class="nav-menu__list">
+          <li class="nav-menu__list-item"><a class="data" href="test.html">Take the test <img src="icons/Black_arrow.svg"></a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+   
+  <!--Second section-->
+  
+  <div class="box_container"> 
+    <form onsubmit="sendEmail(); reset(); return false;">
+      <h3 class="contact_heading">GET IN TOUCH</h3>
+      <input type="text" id="name" placeholder="Your name" required>
+      <input type="email" id="email" placeholder="Your email" required>
+      <input type="text" id="phone" placeholder="Phone no." required>
+      <textarea id="message" rows="4" placeholder="How can we help you?"></textarea>
+      <button class="btn btn-1 btn-sep icon-info" onclick="sendEmail()">Send</button>
+    </form> 
+  </div>
+
+
+  <script>
+    function sendEmail() {
+      event.preventDefault();
+
+      let params = {
+        name: document.getElementById("name").value,
+        email: document.getElementById("email").value,
+        phone: document.getElementById("phone").value,
+        message: document.getElementById("message").value,
+      };
+
+      const serviceID = "service_n9p2xah";
+      const templateID = "template_0a7qedg";
+
+      emailjs.send(serviceID, templateID, params)
+      .then(
+        res => {
+          document.getElementById("name").value = "";
+          document.getElementById("email").value = "";
+          document.getElementById("phone").value = "";
+          document.getElementById("message").value = "";
+          console.log(res);
+          alert("Your message has sent successfully")
+        })
+        .catch(err => console.log(err));
+    }
+    
+  </script>
+
+  <!--
+  <script src="https://smtpjs.com/v3/smtp.js"></script>
+  <script>
+    function sendEmail() {
+      // Replace these with your actual SMTP credentials
+      let yourUsername = "YOUR_SMTP_USERNAME";
+      let yourPassword = "YOUR_SMTP_PASSWORD";
+  
+      Email.send({
+        SecureToken : "YOUR_SMTP_TOKEN", // Get this token from SMTPJS.com after signing up
+        To : 'tattinus@icloud.com',
+        From : document.getElementById("email").value,
+        Subject : "New Contact Form Enquiry",
+        Body : "Name: " + document.getElementById("name").value
+          + "<br> Email: " + document.getElementById("email").value
+          + "<br> Phone No: " + document.getElementById("phone").value
+          + "<br> Message: " + document.getElementById("message").value
+      }).then(
+      message => alert("Message Sent Successfully")
+      );
+    }
+  </script>
+-->
+
+<!--Footer-->
+<div class="footer-section">
+  <div class="container">
+    <div class="first_line">
+      <a href="index.html"><img class="main-secrion__logo" src="icons/Logo.svg" alt=""></a>
+      <p class="cont_word"><a class="data" href="test.html">Contact</a></p>
+    </div>
+
+    <div class="second_line">
+      <div class="social-media__bottom-container">
+          <div class="social-media__bottom-container__icon"><a href="https://t.me/Yevgeniia_N">
+            <img src="icons/Telegram _icon.svg" alt="">
+          </a></div>
+          <div class="social-media__bottom-container__icon"><a href="https://instagram.com/like_a_nativenglish?utm_source=qr&igshid=MzNlNGNkZWQ4Mg%3D%3D">
+            <img src="icons/Instagram_icon.svg" alt=""></a></div>
+          <div class="social-media__bottom-container__icon last-element"><a href="#"><img src="icons/Facebook_icon.svg" alt=""></a></div>
+  
+
+        <div class="cont_info">
+        <p class="cont_info__tel">Phone: <a href="tel:+15879686392" class="data">+1 (587) 968-6392 </a></p>
+        <br>
+        <p class="cont_info__tel">Phone: <a href="tel:+380637684185" class="data">+38 (063) 768-4185 </a></p>
+        <br>
+        <p>E-mail: <a href="mailto: englishnikisite@gmail.com" class="data">englishnikisite@gmail.com</a></p>
+        <br>
+        <p>Mon - Fri: &nbsp; 9:00AM - 5:00PM</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <script type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
+  </script>
+  <script type="text/javascript">
+    (function(){
+      emailjs.init("iPf_LbNPj41QA8a7v");
+    })();
+  </script>
+
+</body>
+</html>
